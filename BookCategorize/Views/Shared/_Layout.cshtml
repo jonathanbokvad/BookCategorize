@@ -1,0 +1,69 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelper
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="text-white" style="font-family: Monseratt-Medium;">@ViewData["Title"] - BookCategorize</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stfont-familyamImpact, Haettenschweiler, 'Arial Narrow Bold', sans-serift/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookCategorize.styles.css" asp-append-version="true" />
+</head>
+<body >
+    <header>
+        <nav  class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark mb-4">
+            <div class="container-fluid" >
+                <a  class="navbar-brand" asp-area="" asp-controller="Book" asp-action="Start"><svg xmlns="http://www.w3.org/2000/svg" fill="#ffff" width="34" height="34" viewBox="0 0 24 24"><path d="M23 5v13.883l-1 .117v-16c-3.895.119-7.505.762-10.002 2.316-2.496-1.554-6.102-2.197-9.998-2.316v16l-1-.117v-13.883h-1v15h9.057c1.479 0 1.641 1 2.941 1 1.304 0 1.461-1 2.942-1h9.06v-15h-1zm-12 13.645c-1.946-.772-4.137-1.269-7-1.484v-12.051c2.352.197 4.996.675 7 1.922v11.613zm9-1.484c-2.863.215-5.054.712-7 1.484v-11.613c2.004-1.247 4.648-1.725 7-1.922v12.051z"/></svg></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" >
+@*                   !important    <li class="nav-item">
+                            <a class="nav-link text-white" style="font-family: Monseratt-Medium;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+       color      <li class="nav-item">
+                            <a class="nav-link text-white" style="font-family: Monseratt-Medium;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="font-family: Monseratt-Medium;" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
+                        </li>*@
+                         <li class="nav-item fw-bold" >
+                            <a class="nav-link " style="font-size: 20px; margin-left: 3em;" asp-area="" asp-controller="Book" asp-action="SearchForm">Search</a>
+                        </li>
+                        <li class="nav-item fw-bold" >
+                            <a class="nav-link" style="font-size: 20px; margin-left: 3em;" asp-area="" asp-controller="Book" asp-action="Start">My Books</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<style>
+/*    a.nav-link.text-white.current{
+          text-decoration: underline;
+    }*/
+   
+    body {background-color: #FFFFFF;} 
+    a.nav-link{
+       color: white !important;
+    }
+     a.nav-link:hover{
+       color: gray !important;
+    }
+
+</style>

@@ -1,0 +1,42 @@
+﻿@model BookCategorize.Models.SearchBookModel
+@using System.Linq;
+@using Newtonsoft.Json
+
+<form asp-controller="Book" asp-action="Index">
+    <div class="input-group mb-3" style="margin-bottom: 30px; width: 300px;">
+        <input class="form-control" type="text" name="SearchString" />
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </div>
+</form>
+
+@if (Model.totalItems > 0 && Model.items != null)
+{
+    <div class="row row-cols-1 row-cols-md-5 g-3">
+        @foreach (var item in Model.items)
+        {
+            @if (item.volumeInfo.imageLinks != null && item.volumeInfo.description != null && item.volumeInfo.publishedDate != null && item.volumeInfo.title != null)
+            {
+                <div class="col zoom">
+                    <a asp-controller="Book" asp-action="Create" asp-route-id="@item.Id">
+                        <img src="@item.volumeInfo.imageLinks.smallThumbnail" style="width: 9em; height: 14em;" class="card-img-top" alt="Book cover">
+                    </a>
+                    <div class="card-body">
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+else
+{
+    <h1>Search yielded no book results...</h1>
+}
+
+<style>
+    .zoom {
+        transition: transform .3s;
+    }
+    .zoom :hover {
+         transform: scale(1.12);
+     }
+</style>

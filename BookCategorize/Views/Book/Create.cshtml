@@ -1,0 +1,44 @@
+﻿@using System.ComponentModel
+@using System.Text.RegularExpressions
+@model BookCategorize.Models.Item
+
+<div class="container" style="margin-top: 60px;">
+    <div class="row">
+        <form asp-action="Save">
+            <div class="form-group" hidden="hidden">
+                <p asp-for="Id" class="control-label"></p>
+                <textarea asp-for="Id" class="form-control"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img style="height: 28em; width: 20em;" src="@Model.volumeInfo.imageLinks.smallThumbnail" alt="Book cover" />
+                    <Select style="margin-top: 20px; width: 17.9em; text-align:Center; font-size: 18px;" class="btn btn-dark dropdown-toggle"
+                            @Html.DropDownList("CategorizeType", Html.GetEnumSelectList<CategorizeType>())
+                     <Select style="margin-top: 20px; width: 17.9em; text-align:Center; font-size: 18px;" class="btn btn-dark dropdown-toggle"
+                           @Html.DropDownList("Rating", Html.GetEnumSelectList<Rating>())
+                 <div class="form-group" style="margin-top: 20px; margin-bottom: 20px;">
+                 <input type="submit" value="Add to my books" class="btn btn-success" />
+                  </div>
+                  <a class="btn btn-primary" asp-action="Index">Back to Search</a>
+                </div>
+                <div class="col-8">
+                    <div class="container">
+                        <p style="font-weight:600; font-size: 40px;" asp-for="volumeInfo.Title">@Model.volumeInfo.title </p>
+                        <p style="font-weight:500; font-size: 25px;">@Model.volumeInfo.AllAuthors</p>
+                        <label style="font-weight:500; font-size: 17px" class="control-label">Published date</label>
+                        <p>@Model.volumeInfo.publishedDate</p>
+                        <label style="font-weight:500; font-size: 17px">Description</label>
+                        <p>@Regex.Replace(Model.volumeInfo.description, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty)</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}}

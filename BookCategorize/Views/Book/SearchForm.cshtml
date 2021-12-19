@@ -1,0 +1,17 @@
+﻿@model BookCategorize.Models.SearchBookModel
+
+<div class="d-flex justify-content-center" style="margin-top: 200px;">
+    <div>
+        <form asp-action="Index">
+            <label class="control-label d-flex justify-content-center fw-bold" style="font-size: 30px;margin-bottom: 30px;">Find the book you like!</label>
+            <div class="form-group d-flex justify-content-center" style="width: 30em;">
+                <input name="searchString" class="form-control" placeholder="Search for books"/>
+                <input type="submit" value="Search" style="margin-left: 5px;width: 70px;" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
