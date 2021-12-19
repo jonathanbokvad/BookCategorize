@@ -1,5 +1,5 @@
 # BookCategorize
-Search for, categorize and rate your favorite books in this ASP.NET application. 
+Search, categorize and rate your favorite books in this ASP.NET application. 
 Search was made possible by requesting information from Google book API.
 
 ## How-to:
