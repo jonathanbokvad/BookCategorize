@@ -84,15 +84,9 @@ namespace BookCategorize.Services
             SaveChanges();
         }
 
-        //public IEnumerable<Searches> GetAllSearches()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public void SaveChanges()
         {
             _context.SaveChanges();
         }
-
     }
 }

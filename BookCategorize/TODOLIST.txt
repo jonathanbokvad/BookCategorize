@@ -1,2 +1,0 @@
-﻿Higltighta vilken navbar meny man är på
-Fixa så databasen raderar sökhistoriken efter appen stängs ner

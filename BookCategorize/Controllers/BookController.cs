@@ -58,10 +58,10 @@ namespace BookCategorize.Controllers
 
         public async Task<ActionResult> Index(string searchString)
         {
-            searches.TemporarySearch = searchString;
 
-            if (/*_context.Searches.Count() <= 0 &&*/ searchString != null)
+            if (searchString != null)
             {
+                searches.TemporarySearch = searchString;
                 _services.AddSearch(searches);
                 await OnInitializedAsync(searchString);
                 return View(booksSearched);
@@ -70,8 +70,6 @@ namespace BookCategorize.Controllers
             {
                 searches =  _services.GetLastSearch();
                 await OnInitializedAsync(searches.TemporarySearch);
-                //_context.Searches.Remove(searches);
-                //_context.SaveChanges();
                 return View(booksSearched);
             }
         }

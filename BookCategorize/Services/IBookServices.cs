@@ -7,7 +7,6 @@ namespace BookCategorize.Services
         IEnumerable<Volumeinfo> GetAllBooksInformation();
         Volumeinfo GetOneBook(Volumeinfo volumeinfo);
         void UpdateBookInformation(Volumeinfo volumeinfo);
-        //IEnumerable<Searches> GetAllSearches()
         Searches GetLastSearch();
         void AddBook(Item book, CategorizeType categorizeType, Rating rating);
         void AddBookInformation(Volumeinfo volumeinfo);
