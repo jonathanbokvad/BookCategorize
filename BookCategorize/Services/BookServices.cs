@@ -20,6 +20,13 @@ namespace BookCategorize.Services
             _context.Item.Add(book);
             SaveChanges();
         }
+        public bool HasDuplicate(Item book)
+        {
+            if (_context.Item.Any(x => x.Id == book.Id))
+                return true;
+            else
+                return false;
+        }
 
         public void AddBookInformation(Volumeinfo volumeinfo)
         {

@@ -5,6 +5,7 @@ namespace BookCategorize.Services
     public interface IBookServices
     {
         IEnumerable<Volumeinfo> GetAllBooksInformation();
+        bool HasDuplicate(Item book);
         Volumeinfo GetOneBook(Volumeinfo volumeinfo);
         void UpdateBookInformation(Volumeinfo volumeinfo);
         Searches GetLastSearch();

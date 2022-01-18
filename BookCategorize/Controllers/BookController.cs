@@ -9,6 +9,7 @@ using System.Data;
 using System.Text;
 using System.Text.Json;
 
+
 namespace BookCategorize.Controllers
 {
     public class BookController : Controller
@@ -36,7 +37,6 @@ namespace BookCategorize.Controllers
             {
                 var books = await response.Content.ReadAsStringAsync();
                 booksSearched = JsonConvert.DeserializeObject<SearchBookModel>(books);
-
             }
         }
         protected async Task OnInitializedAsync(Item itemBook)
@@ -53,7 +53,6 @@ namespace BookCategorize.Controllers
                 book = JsonConvert.DeserializeObject<Item>(bookFound);
             }
         }
-
         #endregion
 
         public async Task<ActionResult> Index(string searchString)
@@ -106,9 +105,16 @@ namespace BookCategorize.Controllers
 
         public async Task<IActionResult> Save(Item itemBook, CategorizeType categorizeType, Rating rating)
         {
-            await OnInitializedAsync(itemBook);
-            _services.AddBook(book, categorizeType, rating);
-            return RedirectToAction(nameof(Start));
+            if (_services.HasDuplicate(itemBook))
+            {
+                return RedirectToAction(nameof(PopupIfDuplicateExists));
+            }
+            else
+            {
+                await OnInitializedAsync(itemBook);
+                _services.AddBook(book, categorizeType, rating);
+                return RedirectToAction(nameof(Start));
+            }
         }
 
         public async Task<IActionResult> Create(Item itemBook)
@@ -127,6 +133,10 @@ namespace BookCategorize.Controllers
         {
             _services.UpdateBookInformation(bookModel);
             return RedirectToAction(nameof(Start));
+        }
+        public IActionResult PopupIfDuplicateExists()
+        {
+            return PartialView(PopupIfDuplicateExists);
         }
     }
 }
